@@ -1,0 +1,22 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+//aqui se cria as tabelas do banco de dados
+
+//model é a maneira de criar uma tabela
+
+model User {
+  id   String @id @default(uuid()) //indica primary key / @default(uuid()) gera um id unico universal
+  name String
+}
+
+//executar: npx prisma migrate dev para ler as alterações do arquivo

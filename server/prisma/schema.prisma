@@ -15,8 +15,26 @@ datasource db {
 //model é a maneira de criar uma tabela
 
 model User {
-  id   String @id @default(uuid()) //indica primary key / @default(uuid()) gera um id unico universal
-  name String
+  id        String @id @default(uuid()) //indica primary key / @default(uuid()) gera um id unico universal
+  githubId  Int    @unique //somente um usuario por Id github
+  name      String
+  login     String //github user da pessoa
+  avatarUrl String
+
+  memories Memory[] //relacionamento: 1 user tem X memorias
 }
 
 //executar: npx prisma migrate dev para ler as alterações do arquivo
+
+model Memory {
+  id     String @id @default(uuid())
+  userId String
+
+  coverUrl  String //imagem ou video de fundo da publicação
+  content   String //texto da publicação
+  isPublic  Boolean  @default(false) //se vai ficar público ou não
+  createdAt DateTime @default(now()) //definido na hora a data e hora que a pessoa fizer uma publicação
+
+  user User @relation(fields: [userId], references: [id]) //referencia a foreign key
+  //relacionamento: 1 memoria tem 1 User
+}

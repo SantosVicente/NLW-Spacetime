@@ -1,10 +1,10 @@
 /* eslint-disable prettier/prettier */
 import { FastifyInstance } from 'fastify'
-import { prisma } from '../lib/prisma'
 import { z } from 'zod'
+import { prisma } from '../lib/prisma'
 
 export async function memoriesRoutes(app: FastifyInstance) {
-  app.get('/memories/', async () => {
+  app.get('/memories', async () => {
     const memories = await prisma.memory.findMany({
       orderBy: {
         createdAt: 'asc',
@@ -36,7 +36,7 @@ export async function memoriesRoutes(app: FastifyInstance) {
     return memory
   })
 
-  app.post('/memories/:id', async (request) => {
+  app.post('/memories', async (request) => {
     const bodySchema = z.object({
       content: z.string(),
       coverUrl: z.string(),
@@ -50,7 +50,7 @@ export async function memoriesRoutes(app: FastifyInstance) {
         content,
         coverUrl,
         isPublic,
-        userId: '4ec1db8a-a4bf-4dc7-ac76-a7c09ba5df4b',
+        userId: '5ac8562f-5c67-49da-8319-5646cf8b8b6d',
       },
     })
 

@@ -15,7 +15,7 @@ datasource db {
 
 model User {
   id        String @id @default(uuid()) //indica primary key / @default(uuid()) gera um id unico universal
-  githubId  String @unique //somente um usuario por Id github
+  githubId  Int    @unique //somente um usuario por Id github
   name      String
   login     String //github user da pessoa
   avatarUrl String

@@ -37,7 +37,7 @@ export default function App() {
     BaiJamjuree_700Bold,
   })
 
-  const [response, signInWithGithub] = useAuthRequest(
+  const [, response, signInWithGithub] = useAuthRequest(
     {
       clientId: '6ef9dc25586deaea98c4',
       scopes: ['identity'],

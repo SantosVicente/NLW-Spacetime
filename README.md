@@ -1,4 +1,4 @@
-# NLW-Spacetime
+# NLW Spacetime
 
 - O projeto tem como base criar uma cápsula do tempo para cadastrar memórias e poder revisitá-las quando bem entender
 
